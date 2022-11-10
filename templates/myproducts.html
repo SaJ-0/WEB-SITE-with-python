@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel = "stylesheet">
+    <title>My products</title>
+</head>
+<body style="background-color:lightblue;">
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/news" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="/home"></use></svg>
+          <span class="fs-4" style="color: "><strong>AITU news</strong></span>
+      </a>
+        <a href="/market" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="10" height="10"><use href=""></use></svg>
+          <span class="fs-4" style="color: "><strong>AITU Market</strong></span>
+      </a>
+      <ul class="nav nav-pills">
+          <form action="/myproducts">
+              <button type="submit" class="btn btn-outline-primary">My products</button>
+          </form>
+          <form action="/logout">
+            <button type="submit" class="btn btn-primary">Logout</button>
+          </form>
+      </ul>
+    </header>
+  </div>
+    <form action="/addproducts">
+        <button type="submit" class="btn btn-primary btn-lg btn-block mb-2" style="margin-left: 350px;">Add products</button>
+    </form>
+    <div class = "container">
+        {% for news in news %}
+        <div class="card mb-3" style="width: 100%">
+            <img class="card-img-top" src = '{{news.imageUrl}}' style="width: 10%">
+                <h5 class="card-title">{{news.title}}</h5>
+                <p class="card-text">{{news.content}}</p>
+                    <p class="card-text"><small class="text-muted"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square-fill" viewBox="0 0 16 16">
+                      <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.5 10a.5.5 0 0 0 .832.374l4.5-4a.5.5 0 0 0 0-.748l-4.5-4A.5.5 0 0 0 5.5 4v8z"/>
+                    </svg>{{ news.source }}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square-fill" viewBox="0 0 16 16">
+                      <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.5 10a.5.5 0 0 0 .832.374l4.5-4a.5.5 0 0 0 0-.748l-4.5-4A.5.5 0 0 0 5.5 4v8z"/>
+                    </svg>{{news.login.email}} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square-fill" viewBox="0 0 16 16">
+                      <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.5 10a.5.5 0 0 0 .832.374l4.5-4a.5.5 0 0 0 0-.748l-4.5-4A.5.5 0 0 0 5.5 4v8z"/>
+                    </svg> {{news.date}}</small></p>
+            <div>
+                <form action="/edit/{{news.id}}">
+                    <button class="btn btn-outline-primary" >Edit</button>
+                </form>
+                <form action="/delete/{{news.id}}">
+                        <button type="submit" class = "btn btn-danger">Delete</button>
+                </form>
+            </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

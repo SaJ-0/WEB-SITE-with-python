@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel = "stylesheet">
+    <title>Add products</title>
+</head>
+<body style="background-color: lightblue;">
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="/home"></use></svg>
+          <span class="fs-4" style="color: "><strong>AITU news</strong></span>
+      </a>
+<a href="/market" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="10" height="10"><use href=""></use></svg>
+          <span class="fs-4" style="color: "><strong>AITU Market</strong></span>
+      </a>
+      <ul class="nav nav-pills" >
+          <form action="/myproducts" >
+              <button type="submit" class="btn btn-outline-primary"  >My products</button>
+          </form>
+          <form action="/logout">
+            <button type="submit" class="btn btn-primary">Logout</button>
+          </form>
+      </ul>
+
+    </header>
+    <h2 style="color:black"><strong>New product</strong></h2>
+    <form class="needs-validation" action="/addproducts" method = "post" style="margin-left: 30%; margin-top: 40px" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="row g-3">
+            <div class="col-sm-8">
+                <label>Name product</label>
+                    {{ form.product(type = "text", class="form-control") }}
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+              <label>Description</label>
+                {{ form.description(type = "text", class="form-control") }}
+        </div>
+        <div class="col-sm-8">
+              <label>Select category</label>
+                {{ form.category(type = "text", class="form-control") }}
+        </div>
+        <div class="col-sm-8">
+            <label>Image</label>
+            <div class="my-3">
+            <div class="form-check">
+              <input id="URL" name="method" type="radio" class="form-check-input" checked="" required="">
+              <label class="form-check-label" for="URL">URL</label>
+                {{ form.imageURL(type = "text", class="form-control", placeholder = "URL") }}
+            </div>
+
+            </div>
+        </div>
+        <div class="col-sm-8">
+              <label>Seller</label>
+                {{ form.seller(type = "text", class="form-control") }}
+        </div>
+        <hr style="width: 65%">
+        <button type="submit" class="btn btn-primary btn-lg btn-block mb-2">Add</button>
+    </form>
+
+
+</div>
+</body>
+</html>
